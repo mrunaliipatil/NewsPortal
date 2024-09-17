@@ -1,5 +1,21 @@
 const API_KEY = "e87d9cbbf7db4c2ea185d0baafa5036e";
 const url = "https://newsapi.org/v2/everything?q=";
+fetch('https://newsapi.org/v2/everything?q=Technology&apiKey=e87d9cbbf7db4c2ea185d0baafa5036e', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        // Other headers if necessary
+        'Upgrade': 'HTTP/2.0' // Hint the protocol upgrade
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => console.log(data))
+.catch(error => console.error('There was an error!', error));
 
 window.addEventListener("load", () => fetchNews("Technology"));
 
